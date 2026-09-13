@@ -1,0 +1,22 @@
+THE MOTOR VEHICLE CIRCULATION TAX BILL, 2026
+
+AN ACT of Parliament to impose a circulation tax on motor vehicles to fund road maintenance and for connected purposes.
+
+PART I — PRELIMINARY
+1. This Act may be cited as the Motor Vehicle Circulation Tax Act, 2026.
+2. In this Act, unless the context otherwise requires—
+"assessed value" means the value of a motor vehicle as determined by the Commissioner-General of the Kenya Revenue Authority under section 5;
+"Commissioner-General" means the Commissioner-General of the Kenya Revenue Authority appointed under the Kenya Revenue Authority Act;
+
+PART II — IMPOSITION OF CIRCULATION TAX
+3. (1) There shall be charged, levied and paid a tax to be known as the Motor Vehicle Circulation Tax.
+(2) The tax shall be charged at the rate of two point five per cent (2.5%) of the assessed value of the motor vehicle.
+(3) The tax shall be payable annually by the owner of the motor vehicle at the time of renewal of the insurance policy in respect of the motor vehicle.
+(4) An insurer shall not issue or renew an insurance policy in respect of a motor vehicle unless the owner of the motor vehicle provides proof of payment of the tax under this Act.
+
+PART III — VALUATION AND ASSESSMENT
+5. (1) The Commissioner-General shall determine and publish a depreciation schedule and valuation database for all makes and models of motor vehicles in Kenya for the purpose of assessing the value of motor vehicles under this Act.
+(2) The assessed value of a motor vehicle shall be determined in accordance with the depreciation schedule published under subsection (1).
+
+PART IV — PENALTIES
+8. Where the tax is not paid on the due date, a penalty equal to five per cent (5%) per month of the unpaid tax shall be charged and shall be collected as a debt due to the Government.

@@ -1,0 +1,56 @@
+# ============================================
+# Python (all subprojects)
+# ============================================
+.venv/
+venv/
+env/
+.env
+backend/.env
+*.env
+__pycache__/
+*.pyc
+**/secrets.toml
+**/.pytest_cache/
+/*.json
+
+# ============================================
+# Streamlit Prototype
+# ============================================
+.streamlit/secrets.toml
+streamlit_prototype/
+
+# ============================================
+# Next.js Frontend
+# ============================================
+frontend/node_modules/
+frontend/.next/
+frontend/next-env.d.ts
+frontend/.env.local
+frontend/ui_mockups/
+frontend/screenshots/
+
+# ============================================
+# Project Planning & Review Artifacts
+# ============================================
+code_review.md
+sprint.md
+hustle_yetu_pilot_budget.md
+hustle_yetu_script.md
+docs/implementation_log.md
+docs/code_reviews/
+docs/domain-cutover.md
+docs/environment-setup.md
+docs/redesign.md
+docs/vps-setup.md
+
+# ============================================
+# VS Code (keep workspace settings, ignore user prefs)
+# ============================================
+.vscode/
+.vscode/settings.json
+
+# ============================================
+# OS junk
+# ============================================
+Thumbs.db
+.DS_Store
