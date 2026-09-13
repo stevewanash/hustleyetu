@@ -133,10 +133,11 @@ def verify_summary_claims(
         prompt_content.append(f"FULL ORIGINAL LEGISLATIVE TEXT:\n{extracted_text[:100000]}")
 
     if rag_chunks:
-        formatted_chunks = "\n---\n".join([
-            f"[{c.get('section_ref') or f'Chunk {c.get("chunk_index", i)}'}]:\n{c.get('chunk_text', '')}"
-            for i, c in enumerate(rag_chunks)
-        ])
+        chunk_lines = []
+        for i, c in enumerate(rag_chunks):
+            label = c.get('section_ref') or f"Chunk {c.get('chunk_index', i)}"
+            chunk_lines.append(f"[{label}]:\n{c.get('chunk_text', '')}")
+        formatted_chunks = "\n---\n".join(chunk_lines)
         prompt_content.append(f"HIGHLIGHTED RAG CHUNKS:\n{formatted_chunks}")
 
     if regex_extractions:
