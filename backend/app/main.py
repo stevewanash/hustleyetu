@@ -12,12 +12,14 @@ app = FastAPI(
 # CORS setup
 origins = [
     "https://hustleyetu.aibuildathon.dev",
+    "https://hustleyetu.vercel.app",
     "http://localhost:3000",
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
