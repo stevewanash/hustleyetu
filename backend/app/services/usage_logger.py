@@ -1,5 +1,5 @@
 """
-LLM Usage Logger & Cost Tracking Service for KeLegislate.
+LLM Usage Logger & Cost Tracking Service for hustleyetu.
 Logs token consumption, latency, and estimated USD cost for all Gemini and DeepSeek API calls.
 """
 

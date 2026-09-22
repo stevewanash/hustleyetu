@@ -169,7 +169,7 @@ async def at_delivery_webhook(
 async def incoming_sms_webhook(payload: dict):
     """
     Africa's Talking / Shared Gateway incoming SMS webhook.
-    Receives citizen messages sent to keyword (e.g., 'kamilimu kelegislate ...').
+    Receives citizen messages sent to keyword (e.g., 'kamilimu hustleyetu ...').
     """
     logger.info(f"Received incoming SMS webhook payload: {payload}")
     from_phone = payload.get("from") or payload.get("phoneNumber") or payload.get("from_phone")

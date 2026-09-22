@@ -1,5 +1,5 @@
 """
-Vector Embedding & Structural Chunking Service for KeLegislate.
+Vector Embedding & Structural Chunking Service for hustleyetu.
 Handles legal structural text splitting, Gemini text-embedding-004 generation,
 and pgvector RAG similarity retrieval.
 """
