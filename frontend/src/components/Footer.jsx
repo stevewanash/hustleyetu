@@ -18,6 +18,32 @@ export default function Footer() {
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
               Democratizing legislative literacy and regulatory clarity for Kenya's informal and transport workforce.
             </p>
+            <p className="footer-buildathon">
+              This project was part of the 2026{' '}
+              <a
+                href="https://www.mozillafoundation.org/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mozilla
+              </a>{' '}
+              x{' '}
+              <a
+                href="https://www.kamilimu.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                KamiLimu
+              </a>{' '}
+              Buildathon and has been funded by{' '}
+              <a
+                href="https://www.mozillafoundation.org/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mozilla Foundation
+              </a>.
+            </p>
             <p className="footer-disclaimer">
               <strong>Independent Civic Resource:</strong> HustleYetu is an independent civic education and policy analysis platform. It is not affiliated with, endorsed by, or operating on behalf of the Parliament of Kenya, the Nairobi City County Assembly, or any government ministry.
             </p>

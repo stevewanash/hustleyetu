@@ -1559,6 +1559,24 @@ a.btn-secondary-outline:hover {
   color: var(--text-primary);
 }
 
+.footer-buildathon {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.footer-buildathon a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.footer-buildathon a:hover {
+  color: var(--primary-hover);
+}
+
 .footer-disclaimer {
   font-size: 0.825rem;
   color: var(--text-muted);
