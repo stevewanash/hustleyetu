@@ -1651,3 +1651,80 @@ a.btn-secondary-outline:hover {
     transform: rotate(360deg);
   }
 }
+
+/* ==========================================
+   Team Member Social & Contact Links
+   ========================================== */
+.team-member-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-member-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.team-social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+}
+
+.team-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+}
+
+.team-social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.team-social-btn.team-social-linkedin {
+  color: #0a66c2;
+}
+
+.team-social-btn.team-social-linkedin:hover {
+  background-color: #0a66c2;
+  border-color: #0a66c2;
+  color: #ffffff;
+}
+
+.team-social-btn.team-social-gmail {
+  color: #ea4335;
+}
+
+.team-social-btn.team-social-gmail:hover {
+  background-color: #ea4335;
+  border-color: #ea4335;
+  color: #ffffff;
+}
+
+.team-social-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .team-member-header {
+    gap: 1rem;
+  }
+  .team-social-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
