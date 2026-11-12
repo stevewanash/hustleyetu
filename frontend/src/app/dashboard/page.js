@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import DonutChart from '../../components/DonutChart';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import DashboardAuthGate from '../../components/DashboardAuthGate';
+import { getDashboardSession, logoutDashboard } from '../../lib/dashboardAuth';
 import { api } from '../../lib/api';
 
 const DEFAULT_DEMO_BILLS = [
@@ -11,14 +13,28 @@ const DEFAULT_DEMO_BILLS = [
 ];
 
 export default function DashboardPage() {
+  const [session, setSession] = useState(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
   const [bills, setBills] = useState([]);
   const [selectedBill, setSelectedBill] = useState('');
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 1. Fetch bills for selector & default to first real bill (F9: No "All Bills" option)
+  // 1. Verify Authentication on Client Mount
   useEffect(() => {
+    const active = getDashboardSession();
+    if (active) {
+      setSession(active);
+    }
+    setAuthChecked(true);
+  }, []);
+
+  // 2. Fetch bills once authenticated
+  useEffect(() => {
+    if (!session) return;
+
     async function loadBills() {
       try {
         const response = await api.getBills(1, 100);
@@ -38,11 +54,11 @@ export default function DashboardPage() {
     }
 
     loadBills();
-  }, []);
+  }, [session]);
 
-  // 2. Fetch stats for selected bill
+  // 3. Fetch stats for selected bill once authenticated
   useEffect(() => {
-    if (!selectedBill) return;
+    if (!session || !selectedBill) return;
 
     async function loadStats() {
       try {
@@ -65,13 +81,37 @@ export default function DashboardPage() {
     }
 
     loadStats();
-  }, [selectedBill]);
+  }, [session, selectedBill]);
+
+  const handleSignOut = () => {
+    logoutDashboard();
+    setSession(null);
+    setSelectedBill('');
+    setStats(null);
+  };
+
+  // Prevent hydration flash while checking session
+  if (!authChecked) {
+    return (
+      <div className="animate-fade-in" style={{ padding: '4rem 0', textAlign: 'center' }}>
+        <LoadingSpinner message="Checking dashboard authorization..." />
+      </div>
+    );
+  }
+
+  // If unauthenticated, display the protected Dashboard Auth Gate
+  if (!session) {
+    return (
+      <div className="animate-fade-in">
+        <DashboardAuthGate onAuthenticated={(newSession) => setSession(newSession)} />
+      </div>
+    );
+  }
 
   const supportPct = stats?.support_pct || { support: 0, oppose: 0, neutral: 0 };
   const totalResponses = stats?.total_feedback || 0;
   const avgRating = stats?.avg_rating ? Number(stats.avg_rating).toFixed(1) : '0.0';
   const topConcerns = stats?.top_concerns || [];
-
   const currentBillObj = bills.find((b) => b.id === selectedBill);
 
   // Visual 5-dot rating indicator
@@ -97,6 +137,28 @@ export default function DashboardPage() {
 
   return (
     <div className="animate-fade-in">
+      {/* Authenticated Session Status Bar */}
+      <div className="dashboard-auth-status-bar">
+        <div className="dashboard-auth-status-left">
+          <span className="auth-live-dot" aria-hidden="true" />
+          <span className="auth-session-text">Authenticated Session:</span>
+          <strong className="auth-user-email">{session.user?.identifier}</strong>
+          <span className="auth-role-tag">{session.user?.role || 'Verified Analyst'}</span>
+        </div>
+        <button
+          type="button"
+          className="btn-dashboard-signout"
+          onClick={handleSignOut}
+          title="Lock and sign out of dashboard"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          Lock & Sign Out
+        </button>
+      </div>
+
       <div className="page-header" style={{ marginBottom: '1.75rem' }}>
         <h1 className="page-title">Citizen Insights Dashboard</h1>
         <p className="page-subtitle">
@@ -127,7 +189,7 @@ export default function DashboardPage() {
         )}
       </div>
 
-      {/* F10: Loading State with Spinner */}
+      {/* Loading State with Spinner */}
       {loading && (
         <LoadingSpinner message="Aggregating verified citizen stance metrics..." />
       )}
@@ -187,7 +249,7 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Card 3: F6 Tight Ranked Concerns List (No individual padded mini-boxes) */}
+            {/* Card 3: Tight Ranked Concerns List */}
             <div className="content-card">
               <h2 style={{ fontFamily: 'var(--font-title)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
                 Top Public Concerns & Inquiries
